@@ -10,6 +10,7 @@ public class GearControl : MonoBehaviour
     public GameObject friendGear;
 
     Vector3 mousePos;
+    bool isPositive = false;
 
 	// Use this for initialization
 	void Start ()
@@ -31,24 +32,46 @@ public class GearControl : MonoBehaviour
     {
         int step = (int)(transform.localEulerAngles.z / rotStep);
         float realSum = step * rotStep;
-        float mod = transform.localEulerAngles.z - realSum;
-        if (mod > rotStep / 2)
+        float mod = Mathf.Abs(transform.localEulerAngles.z - realSum);
+
+        if (isPositive)
         {
+            if (mod > rotStep / 2)
+            {
+                ++step;
+            }
             ++step;
         }
-        ++step;
+        else
+        {
+            if (mod > rotStep / 2)
+            {
+                --step;
+            }
+            --step;
+        }
+
         float rotX = step * rotStep;
         if (rotX >= 180)
         {
             rotX -= 360;
         }
-        transform.DORotate(new Vector3(0, 0, rotX), 0.1f);
-        friendGear.transform.DORotate(new Vector3(0, 0, -rotX), 0.1f);
+        else
+        {
+            if (rotX <= -180)
+            {
+                rotX += 360;
+            }
+        }
+
+        transform.DORotate(new Vector3(0, 0, rotX), 0.2f);
+        friendGear.transform.DORotate(new Vector3(0, 0, -rotX), 0.2f);
     }
 
     void OnMouseDrag()
     {
         float rotX = Input.GetAxis("Mouse X") * rotSpeed;
+        isPositive = (rotX >= 0);
 
         transform.Rotate(Vector3.forward, rotX);
         friendGear.transform.Rotate(Vector3.forward, -rotX);
