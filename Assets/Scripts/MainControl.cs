@@ -62,7 +62,11 @@ public class MainControl : MonoBehaviour
             gearList[1].transform.DOScale(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.InCubic).OnComplete(() => 
                 {
                     bar.transform.DOMove(new Vector3(600, 0, 0), 0.5f).SetEase(Ease.InCubic);
-                    buttons.transform.DOMove(new Vector3(0, 20f, 0), 0.5f).SetEase(Ease.InCubic).OnComplete(() => { gameScene.SetActive(false); endScene.SetActive(true); });
+                    buttons.transform.DOMove(new Vector3(0, 20f, 0), 0.5f).SetEase(Ease.InCubic).OnComplete(
+                        () => 
+                        {
+                            gameScene.transform.DOScale(new Vector3(0, 0, 0), 0.5f).OnComplete(() => { gameScene.SetActive(false); endScene.SetActive(true); });
+                        });              
                 });
             
         }
@@ -83,7 +87,9 @@ public class MainControl : MonoBehaviour
             gearList[1].transform.DOScale(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.InCubic).OnComplete(() =>
             {
                 bar.transform.DOMove(new Vector3(600, 0, 0), 0.5f).SetEase(Ease.InCubic);
-                buttons.transform.DOMove(new Vector3(0, 20f, 0), 0.5f).SetEase(Ease.InCubic).OnComplete(() => { ReloadGame(); });
+                buttons.transform.DOMove(new Vector3(0, 20f, 0), 0.5f).SetEase(Ease.InCubic).OnComplete(
+                    () => { gameScene.transform.DOScale(new Vector3(0, 0, 0), 0.5f).OnComplete(() => { ReloadGame(); }); }
+                    );               
             });
 
         }
@@ -99,5 +105,10 @@ public class MainControl : MonoBehaviour
     public void ReloadGame()
     {
         SceneManager.LoadScene("Main");
+    }
+
+    public void BackToTitle()
+    {
+        SceneManager.LoadScene("Title");
     }
 }
