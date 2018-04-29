@@ -46,7 +46,7 @@ public class GearSlotControl : MonoBehaviour
 
     public void Hover()
     {
-        transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.2f);
+        transform.DOScale(new Vector3(1.07f, 1.07f, 1.07f), 0.2f);
     }
 
     public void HoverOver()
