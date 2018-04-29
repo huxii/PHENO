@@ -90,7 +90,7 @@ public class PieceControl : MonoBehaviour
             Vector3 pos = new Vector3(0, -letterRange / 2, localZOffset);
             for (int i = 0; i < pieceLetterTypes.Count; ++i)
             {
-                GameObject obj = Instantiate(pieceLetterPrefabs[(int)pieceLetterTypes[i]], transform);
+                GameObject obj = Instantiate(pieceLetterPrefabs[(int)pieceLetterTypes[pieceLetterTypes.Count - i - 1]], transform);
                 obj.transform.localPosition = pos;
                 pos.y += letterInterval;
             }

@@ -146,8 +146,8 @@ public class GearControl : MonoBehaviour
         Debug.Log(count);
         for (int i = 0; i < count; ++i)
         {
-            int j = (id + i) % gearLetterList.Count; Debug.Log(gearLetterTypes[j] + " " + piece.pieceLetterTypes[i]);
-            if (isTaken[j] || piece.pieceLetterTypes[i] != gearLetterTypes[j])
+            int j = (id + i) % gearLetterList.Count; Debug.Log(gearLetterTypes[j] + " " + piece.pieceLetterTypes[count - i - 1]);
+            if (isTaken[j] || piece.pieceLetterTypes[count - i - 1] != gearLetterTypes[j])
             {
                 return false;
             }
