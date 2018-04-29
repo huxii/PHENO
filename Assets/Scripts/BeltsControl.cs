@@ -10,7 +10,9 @@ public class BeltsControl : MonoBehaviour
     Queue<GameObject> pieceDownQueue = new Queue<GameObject>();
 
     int piecesNum;
+    [SerializeField]
     float pieceUpTimer = 0;
+    [SerializeField]
     float pieceDownTimer = 0;
     float pieceCD = 2f;
 
@@ -27,27 +29,33 @@ public class BeltsControl : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        pieceUpTimer -= Time.deltaTime;
-        pieceDownTimer -= Time.deltaTime;
+    {   
         if (pieceUpTimer <= 0)
-        {
-            pieceUpTimer = pieceCD;
+        {         
             if (pieceUpQueue.Count > 0)
             {
+                pieceUpTimer = pieceCD;
                 GameObject piece = pieceUpQueue.Dequeue();
                 piece.GetComponent<PieceControl>().isMoving = true;
             }
         }
+        else
+        {
+            pieceUpTimer -= Time.deltaTime;
+        }
 
         if (pieceDownTimer <= 0)
         {
-            pieceDownTimer = pieceCD;
             if (pieceDownQueue.Count > 0)
             {
+                pieceDownTimer = pieceCD;
                 GameObject piece = pieceDownQueue.Dequeue();
                 piece.GetComponent<PieceControl>().isMoving = true;
             }
+        }
+        else
+        {
+            pieceDownTimer -= Time.deltaTime;
         }
     }
 

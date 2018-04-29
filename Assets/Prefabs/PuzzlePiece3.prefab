@@ -22,6 +22,9 @@ GameObject:
   - component: {fileID: 33435471815753524}
   - component: {fileID: 23371918074530604}
   - component: {fileID: 114541204631074894}
+  - component: {fileID: 65536337056150828}
+  - component: {fileID: 54325844707855582}
+  - component: {fileID: 65251955593364810}
   m_Layer: 0
   m_Name: PuzzlePiece3
   m_TagString: Untagged
@@ -83,6 +86,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1860821573104326}
   m_Mesh: {fileID: 4300000, guid: 0b32866b993b7864e9e3be03a58de2d1, type: 3}
+--- !u!54 &54325844707855582
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860821573104326}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65251955593364810
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860821573104326}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8443224, y: 0.8443219, z: 0.16640651}
+  m_Center: {x: 0.00000020861626, y: -0.000000059604645, z: 0}
+--- !u!65 &65536337056150828
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860821573104326}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.3, z: 3}
+  m_Center: {x: 0.00000020861626, y: -0.000000059604645, z: 1}
 --- !u!114 &114541204631074894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,6 +136,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2dbc88dbd179f54dac9fc0732588eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieceLetters:
-  - {fileID: 1546127814031160, guid: 41ba9ddc169e6064e84087b87acf71b3, type: 2}
+  isMoving: 0
+  pieceLetterTypes: 00000000
+  pieceLetterPrefabs:
+  - {fileID: 1288455523573298, guid: cea884ef0de7f1d46bfab1ac0f962302, type: 2}
+  - {fileID: 1448924522940242, guid: 3aa6a4fc9f1f73e439022abc829a1228, type: 2}
+  - {fileID: 1594084752850356, guid: 8e08bb63e5884ff428c03d0505157402, type: 2}
+  - {fileID: 1404153144375424, guid: 167096f310f62974985d6209e50fc7f3, type: 2}
   speed: 3
+  letterRange: 1.2

@@ -71,13 +71,15 @@
 			}
 			ENDCG
 			/*
-			ZTest On
+			Cull OFF
+			ZWrite OFF
+			ZTest ON
 			Stencil
 			{
 				Ref 4
-				Comp always
-				Pass replace
+				Comp notequal
 				Fail keep
+				Pass replace
 			}
 			*/
 		}
@@ -211,15 +213,12 @@
 				return lightingColor * tex;
 			}
 			ENDCG
-			
 			/*
-			ZTest On
 			Stencil
 			{
 				Ref 4
-				Comp equal
+				Comp always
 				Pass replace
-				Fail keep
 				ZFail keep
 			}
 			*/
